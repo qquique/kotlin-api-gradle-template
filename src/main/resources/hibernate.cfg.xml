@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+        <property name="hibernate.hikari.dataSourceClassName">org.postgresql.ds.PGSimpleDataSource</property>
+        <property name="hibernate.hikari.dataSource.url">jdbc:postgresql://localhost:5432/kag</property>
+        <property name="hibernate.hikari.dataSource.user">postgres</property>
+        <property name="hibernate.hikari.dataSource.password">postgres</property>
+
+        <!-- Connection pool settings -->
+        <property name="hibernate.hikari.maximumPoolSize">10</property>
+        <property name="hibernate.hikari.idleTimeout">30000</property>
+        <property name="hibernate.hikari.connectionTimeout">20000</property>
+        <property name="hibernate.hikari.minimumIdle">5</property>
+
+        <!-- JDBC connection pool settings -->
+        <!-- <property name="hibernate.connection.pool_size">10</property> -->
+
+        <!-- SQL dialect -->
+        <!-- <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> -->
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+
+        <!-- Mapping files -->
+        <mapping class="com.qquique.kag.domain.entity.User"/>
+        <!-- Add more entity classes here -->
+    </session-factory>
+</hibernate-configuration>
